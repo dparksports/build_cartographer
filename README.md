@@ -56,12 +56,7 @@ cmake ..
 make -j10
 
 
-wget https://github.com/protocolbuffers/protobuf/releases/download/v3.6.1/protobuf-cpp-3.6.1.tar.gz
 
-tar -xvf protobuf-cpp-3.6.1.tar.gz
-cd protobuf-3.6.1 
-./configure --disable-shared CXXFLAGS="-fPIC"
-make -j8 
 
 wget https://github.com/protocolbuffers/protobuf/releases/download/v3.6.1/protobuf-cpp-3.6.1.tar.gz
 
@@ -79,18 +74,6 @@ Linking CXX shared library ../../../../bin/libcommon.so
 / usr / bin / ld: /usr/local/lib/libprotobuf.a(common.o): relocation R_X86_64_32S against `.rodata 'can not be used when makinga shared object; recompile with -fPIC
 /usr/local/lib/libprotobuf.a: error adding symbols: Bad value
 
-install
-
-sudo make install
-sudo ldconfig
-
-sudo make uninstall
-
-otherwise, error occurs
-
-Linking CXX shared library ../../../../bin/libcommon.so
-/usr/bin/ld: /usr/local/lib/libprotobuf.a(common.o): relocation R_X86_64_32S against `.rodata' can not be used when makinga shared object; recompile with -fPIC
-/usr/local/lib/libprotobuf.a: error adding symbols: Bad value
 
 install
 
