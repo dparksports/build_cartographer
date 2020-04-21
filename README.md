@@ -54,3 +54,29 @@ mkdir build
 cd build
 cmake ..
 make -j10
+
+
+wget https://github.com/protocolbuffers/protobuf/releases/download/v3.6.1/protobuf-cpp-3.6.1.tar.gz
+
+tar -xvf protobuf-cpp-3.6.1.tar.gz
+cd protobuf-3.6.1 
+./configure --disable-shared CXXFLAGS="-fPIC"
+make -j8 
+
+    tips: we compile static library with --disable-shared CXXFLAGS="-fPIC". 编译动态库dll/so的时候，如果依赖static library(比如profobuf)，那么static library编译的时候需要加上-fPIC,否则动态库编译出错。
+    对于CMake,使用cmake CMAKE_CXX_FLGAS="-fPIC" ..
+
+otherwise, error occurs
+
+Linking CXX shared library ../../../../bin/libcommon.so
+/usr/bin/ld: /usr/local/lib/libprotobuf.a(common.o): relocation R_X86_64_32S against `.rodata' can not be used when makinga shared object; recompile with -fPIC
+/usr/local/lib/libprotobuf.a: error adding symbols: Bad value
+
+install
+
+sudo make install
+sudo ldconfig
+
+sudo make uninstall
+
+
